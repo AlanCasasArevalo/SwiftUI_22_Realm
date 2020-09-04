@@ -15,10 +15,13 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        reloadTableView()
+    }
+    
+    func reloadTableView () {
         people = RealmManager().getAllPeople(filter: nil)
         userTableView.reloadData()
     }
-    
 
     // enviar a swiftUI
     @IBSegueAction func saveView(_ coder: NSCoder) -> UIViewController? {
@@ -40,5 +43,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let objectToDelete = people?[indexPath.row] else { return }
+        RealmManager().delete(object: objectToDelete) { [weak self] success in
+            if success {
+                self?.reloadTableView()
+            } else {
+                print("error al borrar el usuario")
+            }
+        }
+    }
     
 }

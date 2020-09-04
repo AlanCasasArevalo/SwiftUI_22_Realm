@@ -37,4 +37,16 @@ final public class RealmManager {
         return people
     }
     
+    func delete (object: Object, completion: @escaping (Bool) -> Void) {
+        do {
+            try realm?.write{
+                realm?.delete(object)
+                completion(true)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+            completion(false)
+        }
+    }
+    
 }
