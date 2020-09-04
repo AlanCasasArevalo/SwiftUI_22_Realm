@@ -26,4 +26,15 @@ final public class RealmManager {
         }
     }
     
+    func getAllPeople(filter: String?) -> [Person]? {
+        // Se pueden filtras los datos si son necesario filtrarlos
+//        guard let result: Results<Person> = realm?.objects(Person.self).filter("age > 10") else { return [] }
+        guard let result: Results<Person> = realm?.objects(Person.self) else { return [] }
+        var people = [Person]()
+        for person in result {
+            people.append(person)
+        }
+        return people
+    }
+    
 }

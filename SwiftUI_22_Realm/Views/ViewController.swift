@@ -8,12 +8,17 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var userTableView: UITableView!
     
+    var people: [Person]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        people = RealmManager().getAllPeople(filter: nil)
+        userTableView.reloadData()
+    }
+    
 
     // enviar a swiftUI
     @IBSegueAction func saveView(_ coder: NSCoder) -> UIViewController? {
@@ -24,13 +29,14 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return people?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let personToShow = people?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: reusableCellId, for: indexPath)
-        cell.textLabel?.text = "Titulo de la celd"
-        cell.detailTextLabel?.text = "subtitulo de la celda"
+        cell.textLabel?.text = "Nombre: \(personToShow?.name ?? "")"
+        cell.detailTextLabel?.text = "Edad: \(personToShow?.age ?? 0)"
         return cell
     }
     
