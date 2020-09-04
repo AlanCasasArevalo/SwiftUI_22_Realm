@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		518A4EB225023440005540C1 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A4EB125023440005540C1 /* RealmManager.swift */; };
+		518A4EB72502350C005540C1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A4EB62502350C005540C1 /* Person.swift */; };
 		51A72C7F2502255C00BB69B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A72C7E2502255C00BB69B0 /* AppDelegate.swift */; };
 		51A72C812502255C00BB69B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A72C802502255C00BB69B0 /* SceneDelegate.swift */; };
 		51A72C832502255C00BB69B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A72C822502255C00BB69B0 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		01C183E0B9F90C5E5E6411F0 /* Pods_SwiftUI_22_Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_22_Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		518A4EB125023440005540C1 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		518A4EB62502350C005540C1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		51A72C7B2502255C00BB69B0 /* SwiftUI_22_Realm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUI_22_Realm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A72C7E2502255C00BB69B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51A72C802502255C00BB69B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				51A72C8C2502255E00BB69B0 /* Info.plist */,
 				51A72C892502255E00BB69B0 /* LaunchScreen.storyboard */,
+				518A4EB62502350C005540C1 /* Person.swift */,
 				518A4EB525023499005540C1 /* Initialization App */,
 				518A4EB325023479005540C1 /* Managers */,
 				518A4EB42502348A005540C1 /* Views */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518A4EB72502350C005540C1 /* Person.swift in Sources */,
 				51A72C832502255C00BB69B0 /* ViewController.swift in Sources */,
 				518A4EB225023440005540C1 /* RealmManager.swift in Sources */,
 				51A72C7F2502255C00BB69B0 /* AppDelegate.swift in Sources */,
