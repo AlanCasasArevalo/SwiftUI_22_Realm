@@ -5,6 +5,7 @@ struct SaveView: View {
     
     @State private var name = ""
     @State private var age = ""
+    @Environment(\.presentationMode) var back
     
     var body: some View {
         VStack (alignment: .center) {
@@ -13,10 +14,15 @@ struct SaveView: View {
             TextField("Nombre", text: self.$name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             TextField("Edad", text: self.$age)
+                .keyboardType(.decimalPad)            
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button(action: {
-                
+                RealmManager().saveNewUser(name: self.name, age: Int(self.age) ?? 0) { success in
+                    if success {                        
+                        self.back.wrappedValue.dismiss()
+                    }
+                }
             }) {
                 HStack {
                     Image(systemName: "person.crop.circle.fill.badge.plus")

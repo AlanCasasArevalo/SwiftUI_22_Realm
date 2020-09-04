@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51317DE525025BD50071C7CC /* TextField+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51317DE425025BD50071C7CC /* TextField+UIApplication.swift */; };
 		518A4EB225023440005540C1 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A4EB125023440005540C1 /* RealmManager.swift */; };
 		518A4EB72502350C005540C1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A4EB62502350C005540C1 /* Person.swift */; };
 		51A72C7F2502255C00BB69B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A72C7E2502255C00BB69B0 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		01C183E0B9F90C5E5E6411F0 /* Pods_SwiftUI_22_Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_22_Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51317DE425025BD50071C7CC /* TextField+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+UIApplication.swift"; sourceTree = "<group>"; };
 		518A4EB125023440005540C1 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		518A4EB62502350C005540C1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		51A72C7B2502255C00BB69B0 /* SwiftUI_22_Realm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUI_22_Realm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51317DE325025BC50071C7CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51317DE425025BD50071C7CC /* TextField+UIApplication.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		518A4EB325023479005540C1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +107,8 @@
 			children = (
 				51A72C8C2502255E00BB69B0 /* Info.plist */,
 				51A72C892502255E00BB69B0 /* LaunchScreen.storyboard */,
-				518A4EB62502350C005540C1 /* Person.swift */,
+				51317DE325025BC50071C7CC /* Extensions */,
+				51D838CF25025864004CFDBA /* Model */,
 				51D838CC25024C4A004CFDBA /* SwiftUI Views */,
 				518A4EB525023499005540C1 /* Initialization App */,
 				518A4EB325023479005540C1 /* Managers */,
@@ -113,6 +124,14 @@
 				51D838CD25024C62004CFDBA /* SaveView.swift */,
 			);
 			path = "SwiftUI Views";
+			sourceTree = "<group>";
+		};
+		51D838CF25025864004CFDBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				518A4EB62502350C005540C1 /* Person.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		571EDA89AE7F1AEC3B96DF9A /* Frameworks */ = {
@@ -248,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				518A4EB72502350C005540C1 /* Person.swift in Sources */,
+				51317DE525025BD50071C7CC /* TextField+UIApplication.swift in Sources */,
 				51A72C832502255C00BB69B0 /* ViewController.swift in Sources */,
 				518A4EB225023440005540C1 /* RealmManager.swift in Sources */,
 				51A72C7F2502255C00BB69B0 /* AppDelegate.swift in Sources */,
