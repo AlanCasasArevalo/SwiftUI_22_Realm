@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  SwiftUI_22_Realm
-//
-//  Created by Everis on 04/09/2020.
-//  Copyright © 2020 Alan. All rights reserved.
-//
 
 import UIKit
 
