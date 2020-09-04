@@ -15,6 +15,7 @@
 		51A72C862502255C00BB69B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A72C842502255C00BB69B0 /* Main.storyboard */; };
 		51A72C882502255E00BB69B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A72C872502255E00BB69B0 /* Assets.xcassets */; };
 		51A72C8B2502255E00BB69B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A72C892502255E00BB69B0 /* LaunchScreen.storyboard */; };
+		51D838CE25024C62004CFDBA /* SaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D838CD25024C62004CFDBA /* SaveView.swift */; };
 		BF5F46C71FC0884F310729BD /* Pods_SwiftUI_22_Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C183E0B9F90C5E5E6411F0 /* Pods_SwiftUI_22_Realm.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		51A72C872502255E00BB69B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51A72C8A2502255E00BB69B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51A72C8C2502255E00BB69B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51D838CD25024C62004CFDBA /* SaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveView.swift; sourceTree = "<group>"; };
 		8DDF1872BBA26969A5DEBCBA /* Pods-SwiftUI_22_Realm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI_22_Realm.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI_22_Realm/Pods-SwiftUI_22_Realm.release.xcconfig"; sourceTree = "<group>"; };
 		CD26692C1A8A57CA67480B79 /* Pods-SwiftUI_22_Realm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI_22_Realm.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI_22_Realm/Pods-SwiftUI_22_Realm.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,12 +98,21 @@
 				51A72C8C2502255E00BB69B0 /* Info.plist */,
 				51A72C892502255E00BB69B0 /* LaunchScreen.storyboard */,
 				518A4EB62502350C005540C1 /* Person.swift */,
+				51D838CC25024C4A004CFDBA /* SwiftUI Views */,
 				518A4EB525023499005540C1 /* Initialization App */,
 				518A4EB325023479005540C1 /* Managers */,
 				518A4EB42502348A005540C1 /* Views */,
 				51A72C872502255E00BB69B0 /* Assets.xcassets */,
 			);
 			path = SwiftUI_22_Realm;
+			sourceTree = "<group>";
+		};
+		51D838CC25024C4A004CFDBA /* SwiftUI Views */ = {
+			isa = PBXGroup;
+			children = (
+				51D838CD25024C62004CFDBA /* SaveView.swift */,
+			);
+			path = "SwiftUI Views";
 			sourceTree = "<group>";
 		};
 		571EDA89AE7F1AEC3B96DF9A /* Frameworks */ = {
@@ -241,6 +252,7 @@
 				518A4EB225023440005540C1 /* RealmManager.swift in Sources */,
 				51A72C7F2502255C00BB69B0 /* AppDelegate.swift in Sources */,
 				51A72C812502255C00BB69B0 /* SceneDelegate.swift in Sources */,
+				51D838CE25024C62004CFDBA /* SaveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

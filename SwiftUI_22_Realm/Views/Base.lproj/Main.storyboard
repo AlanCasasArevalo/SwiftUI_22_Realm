@@ -59,7 +59,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="STORYBOARD" id="xIY-Zf-mlK"/>
+                    <navigationItem key="navigationItem" title="STORYBOARD" id="xIY-Zf-mlK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uyt-UP-WLz">
+                            <connections>
+                                <segue destination="amV-Bm-dKZ" kind="show" destinationCreationSelector="saveView:" id="PXu-BF-NNv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="userTableView" destination="KXT-Wg-oOo" id="s7y-es-phP"/>
                     </connections>
@@ -67,6 +73,18 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
+        </scene>
+        <!--SwiftUI-->
+        <scene sceneID="W4K-U2-j6u">
+            <objects>
+                <hostingController id="amV-Bm-dKZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="SwiftUI" id="u7W-42-2Wu">
+                        <barButtonItem key="backBarButtonItem" title=" " id="JVr-kb-Scl"/>
+                    </navigationItem>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lG2-km-h7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JDg-z4-sqf">
