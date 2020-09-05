@@ -3,13 +3,19 @@ import SwiftUI
 
 struct SaveView: View {
     
+    @State var isEditingSaveView: Bool
     @State private var name = ""
     @State private var age = ""
+    @State private var title = ""
+    @State private var buttonText = ""
+    
+    var person: Person?
+    
     @Environment(\.presentationMode) var back
     
     var body: some View {
         VStack (alignment: .center) {
-            Text("Guardar persona")
+            Text(title)
                 .font(.system(.title, design: .rounded))
             TextField("Nombre", text: self.$name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -18,19 +24,22 @@ struct SaveView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button(action: {
-                RealmManager().saveNewUser(name: self.name, age: Int(self.age) ?? 0) { success in
-                    if success {                        
-                        self.back.wrappedValue.dismiss()
-                    }
-                }
+                self.save(isEditingSaveView: self.isEditingSaveView)
             }) {
                 HStack {
                     Image(systemName: "person.crop.circle.fill.badge.plus")
                         .font(.system(.title, design: .rounded))
                         .foregroundColor(.white)
-                    Text("Guardar")
-                    .font(.system(.title, design: .rounded))
-                    .foregroundColor(.white)
+                    Text(buttonText)
+                        .font(.system(.title, design: .rounded))
+                        .foregroundColor(.white)
+                }
+                .onAppear {
+                    print(self.isEditingSaveView)
+                    self.title = self.isEditingSaveView ? "Editar persona" : "Guardar persona"
+                    self.buttonText = self.isEditingSaveView ? "Editar" : "Guardar"
+                    self.name = self.isEditingSaveView ? (self.person?.name ?? "") : ""
+                    self.age = self.isEditingSaveView ? "\(self.person?.age ?? 0)" : ""
                 }
             }
             .frame(width: 150, height: 30, alignment: .center)
@@ -41,11 +50,24 @@ struct SaveView: View {
             Spacer()
         }
         .padding()
+        
+    }
+}
+
+extension SaveView {
+    func save (isEditingSaveView: Bool) {
+        RealmManager().saveNewUser(name: self.name, age: Int(self.age) ?? 0, isEditingSaveView: isEditingSaveView, personToUpdate: person) { success in
+            if success {
+                self.back.wrappedValue.dismiss()
+            } else {
+                print("algo ha fallado con el guardado")
+            }
+        }
     }
 }
 
 struct SaveView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveView()
+        SaveView(isEditingSaveView: false)
     }
 }

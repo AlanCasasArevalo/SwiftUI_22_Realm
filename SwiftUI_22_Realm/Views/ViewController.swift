@@ -5,15 +5,17 @@ import SwiftUI
 class ViewController: UIViewController {
     
     let reusableCellId = "userCell"
+    var isEditingSaveView: Bool = false
     
     @IBOutlet weak var userTableView: UITableView!
     
     var people: [Person]?
+    var personSelected: Person?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         reloadTableView()
     }
@@ -22,11 +24,18 @@ class ViewController: UIViewController {
         people = RealmManager().getAllPeople(filter: nil)
         userTableView.reloadData()
     }
-
+    
     // enviar a swiftUI
     @IBSegueAction func saveView(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: SaveView())
+        return UIHostingController(coder: coder, rootView: SaveView(isEditingSaveView: false))
     }
+    
+    @IBSegueAction func editView(_ coder: NSCoder) -> UIViewController? {
+        guard let indexPath = self.userTableView.indexPathForSelectedRow else { fatalError("Fallo al seleccionar la celda") }
+        personSelected = people?[indexPath.row]
+        return UIHostingController(coder: coder, rootView: SaveView(isEditingSaveView: true, person: personSelected))
+    }
+    
     
 }
 

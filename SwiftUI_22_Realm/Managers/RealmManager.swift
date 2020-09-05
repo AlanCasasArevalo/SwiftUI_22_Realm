@@ -5,19 +5,41 @@ final public class RealmManager {
     
     let realm = try? Realm()
     
-    func saveNewUser(name: String, age: Int, completion: @escaping (Bool) -> Void) {
-        let person = Person()
-        person.name = name
-        person.age = age
-        save(object: person) { success in
-            completion(success)
+    func saveNewUser(name: String, age: Int, isEditingSaveView: Bool, personToUpdate: Person?, completion: @escaping (Bool) -> Void) {
+        if isEditingSaveView {
+            edit(name: name, age: age, personToUpdate: personToUpdate) { success in
+                completion(success)
+                
+            }
+        } else {
+            save(name: name, age: age) { success in
+                completion(success)
+            }
         }
     }
     
-    private func save (object: Object, completion: @escaping (Bool) -> Void) {
+    private func edit (name: String, age: Int, personToUpdate: Person?, completion: @escaping (Bool) -> Void) {
+        
         do {
             try realm?.write{
-                realm?.add(object)
+                personToUpdate?.name = name
+                personToUpdate?.age = age
+                completion(true)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+            completion(false)
+        }
+    }
+    
+    private func save (name: String, age: Int, completion: @escaping (Bool) -> Void) {
+        let person = Person()
+        person.name = name
+        person.age = age
+        
+        do {
+            try realm?.write{
+                realm?.add(person)
                 completion(true)
             }
         } catch let error {
@@ -28,7 +50,7 @@ final public class RealmManager {
     
     func getAllPeople(filter: String?) -> [Person]? {
         // Se pueden filtras los datos si son necesario filtrarlos
-//        guard let result: Results<Person> = realm?.objects(Person.self).filter("age > 10") else { return [] }
+        //        guard let result: Results<Person> = realm?.objects(Person.self).filter("age > 10") else { return [] }
         guard let result: Results<Person> = realm?.objects(Person.self) else { return [] }
         var people = [Person]()
         for person in result {
