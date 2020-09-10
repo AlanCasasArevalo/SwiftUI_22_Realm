@@ -9,7 +9,6 @@ final public class RealmManager {
         if isEditingSaveView {
             edit(name: name, age: age, personToUpdate: personToUpdate) { success in
                 completion(success)
-                
             }
         } else {
             save(name: name, age: age) { success in
@@ -40,6 +39,25 @@ final public class RealmManager {
         do {
             try realm?.write{
                 realm?.add(person)
+                completion(true)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+            completion(false)
+        }
+    }
+    
+    func savePet (person: Person, petName: String, petAge: Int, petType: String, completion: @escaping (Bool) -> Void ) {
+        let pet = Pet()
+        pet.name = petName
+        pet.age = petAge
+        pet.type = petType
+        pet.person_id = person.id
+        
+        do {
+            try realm?.write{
+                person.pets.append(pet)
+                print(person)
                 completion(true)
             }
         } catch let error {

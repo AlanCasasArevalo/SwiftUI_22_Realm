@@ -4,8 +4,14 @@ import SwiftUI
 struct SaveView: View {
     
     @State var isEditingSaveView: Bool
+    
     @State private var name = ""
     @State private var age = ""
+    
+    @State private var petName = ""
+    @State private var petAge = ""
+    @State private var petType = ""
+    
     @State private var title = ""
     @State private var buttonText = ""
     
@@ -35,7 +41,6 @@ struct SaveView: View {
                         .foregroundColor(.white)
                 }
                 .onAppear {
-                    print(self.isEditingSaveView)
                     self.title = self.isEditingSaveView ? "Editar persona" : "Guardar persona"
                     self.buttonText = self.isEditingSaveView ? "Editar" : "Guardar"
                     self.name = self.isEditingSaveView ? (self.person?.name ?? "") : ""
@@ -47,6 +52,38 @@ struct SaveView: View {
             .background(Color(.darkGray))
             .cornerRadius(10, antialiased: true)
             .shadow(color: Color(.systemGray2), radius: 5, x: 10, y: 10)
+            Text("Guardar Mascota")
+                .font(.system(.largeTitle, design: .rounded))
+            TextField("Nombre de la mascota", text: self.$petName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Edad de la mascota", text: self.$petAge)
+                .keyboardType(.decimalPad)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Tipo de la mascota", text: self.$petType)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+
+            if isEditingSaveView {
+                Button(action: {
+                    self.savePet()
+                }) {
+                    HStack {
+                        Image(systemName: "tortoise.fill")
+                            .font(.system(.title, design: .rounded))
+                            .foregroundColor(.white)
+                        Text("Guardar")
+                            .font(.system(.title, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                }
+                .frame(width: 200, height: 30, alignment: .center)
+                .padding()
+                .background(Color(.darkGray))
+                .cornerRadius(10, antialiased: true)
+                .shadow(color: Color(.systemGray2), radius: 5, x: 10, y: 10)
+            } else {
+                
+            }
+            
             Spacer()
         }
         .padding()
@@ -64,6 +101,17 @@ extension SaveView {
             }
         }
     }
+    
+    func savePet () {
+        RealmManager().savePet(person: self.person ?? Person(), petName: self.petName, petAge: Int(self.age) ?? 0, petType: self.petType) { (success) in
+            if success {
+                self.back.wrappedValue.dismiss()
+            } else {
+                print("algo ha fallado con el guardado")
+            }
+        }
+    }
+    
 }
 
 struct SaveView_Previews: PreviewProvider {
