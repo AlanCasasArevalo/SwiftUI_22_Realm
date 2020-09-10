@@ -52,15 +52,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let objectToDelete = people?[indexPath.row] else { return }
-        RealmManager().delete(object: objectToDelete) { [weak self] success in
-            if success {
-                self?.reloadTableView()
-            } else {
-                print("error al borrar el usuario")
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Borrar") { [weak self] (_, _, _) in
+            guard let objectToDelete = self?.people?[indexPath.row] else { return () }
+            
+            RealmManager().delete(object: objectToDelete) { [weak self] success in
+                if success {
+                    self?.reloadTableView()
+                } else {
+                    print("error al borrar el usuario")
+                }
             }
         }
+        
+        let showPets = UIContextualAction(style: .normal, title: "Ver mascotas") { (_, _, _) in
+            
+            self.performSegue(withIdentifier: "showPets", sender: indexPath )
+            
+            
+        }
+        
+        let actions = UISwipeActionsConfiguration(actions: [ delete, showPets ])
+        
+        return actions
     }
     
 }

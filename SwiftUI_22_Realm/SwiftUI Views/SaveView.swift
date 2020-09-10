@@ -52,17 +52,17 @@ struct SaveView: View {
             .background(Color(.darkGray))
             .cornerRadius(10, antialiased: true)
             .shadow(color: Color(.systemGray2), radius: 5, x: 10, y: 10)
-            Text("Guardar Mascota")
-                .font(.system(.largeTitle, design: .rounded))
-            TextField("Nombre de la mascota", text: self.$petName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Edad de la mascota", text: self.$petAge)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Tipo de la mascota", text: self.$petType)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-
             if isEditingSaveView {
+                Text("Guardar Mascota")
+                    .font(.system(.largeTitle, design: .rounded))
+                TextField("Nombre de la mascota", text: self.$petName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Edad de la mascota", text: self.$petAge)
+                    .keyboardType(.decimalPad)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Tipo de la mascota", text: self.$petType)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
                 Button(action: {
                     self.savePet()
                 }) {
