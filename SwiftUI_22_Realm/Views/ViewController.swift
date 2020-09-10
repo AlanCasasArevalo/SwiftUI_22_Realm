@@ -66,15 +66,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let showPets = UIContextualAction(style: .normal, title: "Ver mascotas") { (_, _, _) in
-            
             self.performSegue(withIdentifier: "showPets", sender: indexPath )
-            
-            
         }
         
         let actions = UISwipeActionsConfiguration(actions: [ delete, showPets ])
         
         return actions
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPets" {
+            let indexPath = sender as? NSIndexPath
+            let personToShow = people?[indexPath?.row ?? 0]
+            let petsTableVC = segue.destination as! PetsTableViewController
+            petsTableVC.personId = personToShow?.id ?? ""
+        }
     }
     
 }

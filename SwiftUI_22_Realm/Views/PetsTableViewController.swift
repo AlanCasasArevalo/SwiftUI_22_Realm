@@ -5,6 +5,7 @@ import UIKit
 class PetsTableViewController: UITableViewController {
     
     var pets: [Pet]?
+    var personId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +17,8 @@ class PetsTableViewController: UITableViewController {
     }
         
     func reloadTableView () {
-        pets = RealmManager().getAllPets(filter: nil)
+        let predicate = NSPredicate(format: "person_id == %@", personId)
+        pets = RealmManager().getAllPets(filter: predicate)
         self.tableView.reloadData()
     }
 

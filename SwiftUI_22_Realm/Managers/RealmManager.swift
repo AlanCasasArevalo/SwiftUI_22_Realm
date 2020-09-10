@@ -77,10 +77,10 @@ final public class RealmManager {
         return people
     }
 
-    func getAllPets(filter: String?) -> [Pet]? {
+    func getAllPets(filter: NSPredicate?) -> [Pet]? {
         // Se pueden filtras los datos si son necesario filtrarlos
-        //        guard let result: Results<Person> = realm?.objects(Person.self).filter("age > 10") else { return [] }
-        guard let result: Results<Pet> = realm?.objects(Pet.self) else { return [] }
+        let defaultPredicate = NSPredicate(value: true)
+        guard let result: Results<Pet> = realm?.objects(Pet.self).filter(filter ?? defaultPredicate) else { return [] }
         var pets = [Pet]()
         for pet in result {
             pets.append(pet)
